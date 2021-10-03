@@ -4,7 +4,7 @@ import Header from './components/header/header';
 import Home from './components/home/home';
 import Users from './components/users/users';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <Header />

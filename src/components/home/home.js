@@ -1,32 +1,126 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setUserAC } from '../../redux/homeReducer';
+import { setUserAC, setUserAgeAC, setUserEmailAC, setUserFirstNameAC, setUserLastNameAC, setUserGenderAC, setUserUsernameAC, incrementUserIdAC } from '../../redux/homeReducer';
+import form_image from '../../assets/form_image.jpg';
 import './home.css';
 
-const Home = () => {
+
+const Home = (props) => {
+    console.log(props);
+    const [done, setDone] = useState(false);
+
+    const onChangeFirstName = (e) => {
+        let firstName = e.target.value;
+        props.setUserFirstName(firstName);
+    }
+
+    const onChangeLastName = (e) => {
+        let lastName = e.target.value;
+        props.setUserLastName(lastName);
+    }
+
+    const onChangeAge = (e) => {
+        let age = e.target.value;
+        props.setUserAge(age);
+    }
+
+    const onChangeEmail = (e) => {
+        let email = e.target.value;
+        props.setUserEmail(email);
+    }
+
+    const onChangeGender = (e) => {
+        let gender = e.target.value;
+        props.setUserGender(gender);
+    }
+
+    const onChangeUsername = (e) => {
+        let userName = e.target.value;
+        props.setUserUsername(userName);
+    }
+
+    const setUser = () => {
+        let user = props.newUser;
+        if (isValidUser(user)) {
+            props.setUser(user);
+            setDone(true);
+            props.incrementUserId();
+            resetInputs(user);
+        }
+        else {
+            return false
+        }
+        resetInputs(user);
+    }
+
+    const resetInputs = () => {
+        props.setUserFirstName('');
+        props.setUserLastName('');
+        props.setUserAge('')
+        props.setUserEmail('');
+        props.setUserGender('');
+        props.setUserUsername('');
+    }
+
+    const isValidUser = (user) => {
+        return (user.lastName.length !== 0 && user.firstName.length !== 0 && user.age.length !== 0 &&
+            user.email.length !== 0 && user.gender.length !== 0 && user.userName.length !== 0);
+    }
+
     return (
         <div className='home'>
-
-            <input type='text' placeholder='Lastname' />
-            <input type='text' placeholder='Age' />
-            <input type='text' placeholder='Email' />
-            <input type='text' placeholder='Gender' />
-            <input type='text' placeholder='Username' />
-            <button>Set User</button>
+            <div className='home_inner'>
+                <img src={form_image} alt="form_image" className='form_image' />
+                <div className='inputs_wrapper'>
+                    <input className='inputs' type='text' maxLength='20' placeholder='Firstname' onChange={onChangeFirstName} value={props.newUser.firstName} />
+                    <input className='inputs' type="text" maxLength='20' placeholder='Lastname' onChange={onChangeLastName} value={props.newUser.lastName} />
+                    <input className='inputs' type="text" maxLength='2' placeholder='Age' onChange={onChangeAge} value={props.newUser.age} />
+                    <input className='inputs' type="text" maxLength='30' placeholder='Email' onChange={onChangeEmail} value={props.newUser.email} />
+                    <div className='gender_change' onChange={onChangeGender}>
+                        <input className='gender' type="radio" value="Male" name="gender" /> Male
+                        <input className='gender' type="radio" value="Female" name="gender" /> Female
+                    </div>
+                    <input className='inputs' type="text" maxLength='30' placeholder='Username' onChange={onChangeUsername} value={props.newUser.userName} />
+                    <button className='btn_setuser' onClick={setUser}>Set User</button>
+                    {done ? <div className='added'>User added. All users count {props.users.length}</div> : ''}
+                </div>
+            </div>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        state: state.users
+        users: state.homePage.users,
+        newUser: state.homePage.newUser,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUser: () => {
-            dispatch(setUserAC())
+        setUserFirstName: (firstName) => {
+            dispatch(setUserFirstNameAC(firstName));
+        },
+        setUserLastName: (lastName) => {
+            dispatch(setUserLastNameAC(lastName));
+        },
+        setUserAge: (age) => {
+            dispatch(setUserAgeAC(age))
+        },
+        setUserEmail: (email) => {
+            dispatch(setUserEmailAC(email))
+        },
+        setUserGender: (gender) => {
+            dispatch(setUserGenderAC(gender))
+        },
+        setUserUsername: (userName) => {
+            dispatch(setUserUsernameAC(userName))
+        },
+        incrementUserId: (userId) => {
+            dispatch(incrementUserIdAC(userId))
+        },
+        setUser: (user) => {
+            dispatch(setUserAC(user));
         }
     }
 }

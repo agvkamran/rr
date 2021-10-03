@@ -1,4 +1,68 @@
-.users {
-    height: 90vh;
-    background-color: #889EAF;
+.users_page {
+    background-color: rgb(16,16,16);
+    display: flex;
+    flex-wrap: wrap;
+    height: 1000px;
 }
+
+.users_wrapper {
+    /* height: 90vh; */
+    background: rgb(16, 16, 16);
+}
+
+.user_block {
+    min-width: 30%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #fff;
+    overflow: hidden;
+    height: 380px;
+    margin: 30px;
+}
+
+.user_text {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    color: #fff;
+    height: 380px;
+    width: 300px;
+}
+
+.user_text > p {
+    margin-top: 10px;
+}
+
+.delete_user, .edit_user {
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: rgb(16,16,16);
+    border: 3px solid #fff;
+    color: #fff;
+    height: 35px;
+}
+
+/* @media screen and (max-width: 2200px){
+    .users_page {
+        height: 100%;
+    }
+} */
+
+@media screen and (max-width: 600px) {
+    .user_block {
+        flex-direction: column;
+        height: 750px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .user_block {
+        width: 75%;
+    }
+}
+
+/* @media screen and (max-height: 509px) {
+    .users_page {
+        height: 100%;
+    }
+} */
