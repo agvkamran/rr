@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setUserAC, setUserAgeAC, setUserEmailAC, setUserFirstNameAC, setUserLastNameAC, setUserGenderAC, setUserUsernameAC, incrementUserIdAC } from '../../redux/homeReducer';
+import { setUserAC, setUserAgeAC, setUserEmailAC, setUserFirstNameAC, setUserLastNameAC, setUserGenderAC, setUserUsernameAC, incrementUserIdAC } from '../../redux/action-types';
 import form_image from '../../assets/form_image.jpg';
 import './home.css';
 

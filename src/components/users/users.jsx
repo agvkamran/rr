@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { deleteUserAC, updateUserAC } from '../../redux/homeReducer';
+import { deleteUserAC, updateUserAC } from '../../redux/action-types';
 import male from '../../assets/male.png';
 import female from '../../assets/female.png';
 
