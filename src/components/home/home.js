@@ -6,7 +6,6 @@ import './home.css';
 
 
 const Home = (props) => {
-    console.log(props);
     const [done, setDone] = useState(false);
 
     const onChangeFirstName = (e) => {

@@ -7,7 +7,7 @@ const SET_USER_USERNAME = 'SET_USER_USERNAME';
 const INCREMENT_USER_ID = 'INCREMENT_USER_ID';
 const SET_USER = 'SET_USER';
 const DELETE_USER = 'DELETE_USER';
-const EDIT_USER = 'EDIT_USER';
+const UPDATE_USER = 'UPDATE_USER';
 
 const initialState = {
     users: [],
@@ -71,12 +71,12 @@ const homeReducer = (state = initialState, action) => {
                     return user.id !== action.userId
                 })]
             }
-        case EDIT_USER: {
+        case UPDATE_USER: {
+            let index = state.users.findIndex(u => u.id === action.user.id);
+
             return {
-                // ...state,
-                // users: [...state.users.filter((user) => {
-                //     return user.id !== action.userId
-                // })]
+                ...state,
+                users: [...state.users.slice(0, index), action.user, ...state.users.slice(index + 1)]
             }
         }
         default: return state;
@@ -91,7 +91,7 @@ export const setUserGenderAC = (gender) => ({ type: SET_USER_GENDER, gender });
 export const setUserUsernameAC = (userName) => ({ type: SET_USER_USERNAME, userName });
 export const deleteUserAC = (userId) => ({ type: DELETE_USER, userId });
 export const incrementUserIdAC = (userId) => ({ type: INCREMENT_USER_ID, userId });
-// export const editUserAC = (userId) => ({type: EDIT_USER, userId});
+export const updateUserAC = (user) => ({ type: UPDATE_USER, user: user });
 export const setUserAC = (user) => ({ type: SET_USER, user });
 
 export default homeReducer;
