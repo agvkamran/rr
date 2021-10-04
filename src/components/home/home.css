@@ -1,0 +1,114 @@
+.home {
+    background-color: rgb(16,16,16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 900px;
+}
+
+.home_inner {
+    display: flex;
+    border: 2px solid #fff;
+}
+
+.form_image {
+    width: 432px;
+    height: 576px;
+}
+
+.inputs_wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(16,16,16);
+    padding: 60px;
+    justify-content: center;
+    position: relative;
+}
+
+.inputs {
+    margin-top: 10px;
+    min-width: 300px;
+    max-width: 300px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid transparent;
+    outline: none;
+    border: 3px solid #fff;
+    background-color: #fff;
+}
+
+.nan {
+    border: 1px solid red;
+}
+
+.added {
+    margin-top: 20px;
+    color: #fff;
+    position: absolute;
+    bottom: 20px;
+
+}
+
+.gender_change {
+    margin-top: 10px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border: 3px solid #fff;
+    background-color: #fff;
+}
+.gender {
+    width: 25px;
+} 
+
+.gender:nth-child(2){
+    margin-left: 20px;
+}
+
+.btn_setuser {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    background-color: #000;
+    border: 3px solid #fff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s all ease-in-out;
+}
+
+.btn_setuser:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+@media screen and (max-width: 900px) {
+    .home {
+        height: auto;
+    }
+    .home_inner {
+        flex-direction: column;
+        margin: 40px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .home_inner {
+        width: 99%;
+    }
+    .form_image {
+        display: none;
+    }
+    .home {
+        height: 90vh;
+    }
+    .inputs_wrapper {
+        padding: 15px;
+        border-radius: 20px;
+    }
+}
