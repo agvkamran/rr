@@ -6,7 +6,7 @@ import './home.css';
 
 
 const Home = (props) => {
-    const [done, setDone] = useState(false);
+    const [text, setText] = useState('');
 
     const onChangeFirstName = (e) => {
         let firstName = e.target.value;
@@ -42,11 +42,12 @@ const Home = (props) => {
         let user = props.newUser;
         if (isValidUser(user)) {
             props.setUser(user);
-            setDone(true);
+            setText('User has been successfully added.');
             props.incrementUserId();
             resetInputs(user);
         }
         else {
+            setText('User is not added, please fill in all fields.')
             return false
         }
         resetInputs(user);
@@ -81,7 +82,7 @@ const Home = (props) => {
                     </div>
                     <input className='inputs' type="text" maxLength='30' placeholder='Username' onChange={onChangeUsername} value={props.newUser.userName} />
                     <button className='btn_setuser' onClick={setUser}>Set User</button>
-                    {done ? <div className='added'>User added. All users count {props.users.length}</div> : ''}
+                    <div className='added'>{text}</div>
                 </div>
             </div>
         </div>
