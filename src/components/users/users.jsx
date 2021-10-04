@@ -9,6 +9,7 @@ import './users.css';
 const Users = (props) => {
     const [change, setChange] = useState(false);
     const [user, setUser] = useState(null);
+    const [isEditMode, setEditMode] = useState(false);
 
     const onChangeFirstName = (e) => {
         let firstName = e.target.value;
@@ -50,6 +51,7 @@ const Users = (props) => {
     }
 
     const editUser = (userId) => {
+        setEditMode(true)
         setChange(true);
         setUser(props.users.filter(u => u.id === userId)[0]);
     }
@@ -58,10 +60,10 @@ const Users = (props) => {
         if (!isValidUser(user)) {
             return;
         }
-
         props.updateUser(user);
         setUser(null);
         setChange(false);
+        setEditMode(false);
     }
 
     return (
@@ -77,7 +79,7 @@ const Users = (props) => {
                             <p>Email: {user.email}</p>
                             <p>Gender: {user.gender}</p>
                             <p>Username: {user.userName}</p>
-                            <button className='delete_user' onClick={() => deleteUser(user.id)}>Delete</button>
+                            <button className='delete_user' disabled={isEditMode} onClick={() => deleteUser(user.id)}>Delete</button>
                             <button className='edit_user' onClick={() => editUser(user.id)}>Edit</button>
                         </div>
                     </div>

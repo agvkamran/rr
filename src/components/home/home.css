@@ -1,9 +1,9 @@
 .home {
-    height: 90vh;
     background-color: rgb(16,16,16);
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 900px;
 }
 
 .home_inner {

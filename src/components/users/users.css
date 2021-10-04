@@ -38,7 +38,7 @@
     background-color: rgb(16,16,16);
     border: 3px solid #fff;
     color: #fff;
-    height: 35px;
+    min-height: 35px;
 }
 
 /* @media screen and (max-width: 2200px){
@@ -57,11 +57,5 @@
 @media screen and (max-width: 360px) {
     .user_block {
         width: 75%;
-    }
-}
-
-@media screen and (max-height: 600px) {
-    .users_page {
-        height: 10000px;
     }
 }
